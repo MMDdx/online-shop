@@ -57,7 +57,17 @@ const userSchema = new mongoose.Schema({
     photoCover:{
         type: String,
         default: "default.jpg"
-    }
+    },
+    isSubscribed: {
+        type: Boolean,
+        default: false,
+    },
+    subscriptionName: {
+        type: String,
+        enum: ["1-month", "3-month", "6-month"],
+    },
+    subscriptionStart: Date,
+    subscriptionEnd: Date
 
 },{
     toObject: {virtuals: true},
@@ -110,6 +120,14 @@ userSchema.methods.createPasswordResetToken = function (){
     this.passwordResetExpires = Date.now() + 600 * 1000
 
     return token;
+}
+
+
+userSchema.methods.isSubscriptionActive = function (user){
+    if (!user.isSubscribed) {
+        return false;
+    }
+    return user.subscriptionEnd > new Date()
 }
 
 

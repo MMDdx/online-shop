@@ -18,6 +18,8 @@ mongoose.connect(process.env.DATABASE_LOCAL, {
     // useCreateIndex: true,
     // useFindAndModify: false
 }).then(con => console.log("Connected to DB!"));
+// adding cron job for subscription
+require('./cron/subscriptionChecker');
 
 
 const port = process.env.PORT || 3000;

@@ -8,6 +8,7 @@ const userRoutes = require('./routes/userRoutes.js');
 const reviewRoutes = require('./routes/reviewRoutes.js');
 const globalErrorHandler = require('./controllers/ErrorController.js');
 const likeRouter = require('./routes/likeRoutes');
+const subscribeRouter = require('./routes/subscriptionRoutes');
 const qs = require('qs');
 
 app.use(express.json({limit: "10kb"}));
@@ -30,6 +31,7 @@ app.use("/api/v1/products", productRoutes)
 app.use("/api/v1/users", userRoutes)
 app.use("/api/v1/reviews", reviewRoutes)
 app.use("/api/v1/likes", likeRouter)
+app.use("/api/v1/subscription", subscribeRouter)
 
 app.use(globalErrorHandler)
 

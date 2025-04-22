@@ -49,6 +49,10 @@ class Email {
         return await this.send("welcome", 'Welcome to the our Family');
     }
 
+    async sendSubscribeExpired(){
+        return await this.send("subExpired", 'Your Subscription has expired!');
+    }
+
 }
 
 module.exports = Email;
