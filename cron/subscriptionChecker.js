@@ -2,7 +2,7 @@ const cron = require("node-cron")
 const User = require('./../models/UserModel');
 const Email = require("./../utils/email")
 
-cron.schedule('* * * * *', async () => {
+cron.schedule('0 0 * * *', async () => {
     const now = new Date();
     const expiredUsers = await User.find({
         isSubscribed: true,
